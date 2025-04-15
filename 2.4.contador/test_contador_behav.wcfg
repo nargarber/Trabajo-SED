@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="test_contador_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="test_contador" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="528.501 ns"></ZoomEndTime>
+      <Cursor1Time time="0.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="234"></NameColumnWidth>
+      <ValueColumnWidth column_width="177"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="7" />
+   <wvobject fp_name="/test_contador/CLK" type="logic">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_contador/ENABLE" type="logic">
+      <obj_property name="ElementShortName">ENABLE</obj_property>
+      <obj_property name="ObjectShortName">ENABLE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_contador/UP" type="logic">
+      <obj_property name="ElementShortName">UP</obj_property>
+      <obj_property name="ObjectShortName">UP</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_contador/DOWN" type="logic">
+      <obj_property name="ElementShortName">DOWN</obj_property>
+      <obj_property name="ObjectShortName">DOWN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_contador/RESET" type="logic">
+      <obj_property name="ElementShortName">RESET</obj_property>
+      <obj_property name="ObjectShortName">RESET</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_contador/CUENTA" type="array">
+      <obj_property name="ElementShortName">CUENTA[3:0]</obj_property>
+      <obj_property name="ObjectShortName">CUENTA[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_contador/ciclo" type="other">
+      <obj_property name="ElementShortName">ciclo</obj_property>
+      <obj_property name="ObjectShortName">ciclo</obj_property>
+   </wvobject>
+</wave_config>
