@@ -7,25 +7,26 @@ USE ieee.std_logic_1164.ALL;
 -- **********************************************************************
 -- ENTIDAD     (entradas/salidas, el fichero de simulación no tiene)
 -- **********************************************************************
-ENTITY test_codigo IS
-END    test_codigo;
+ENTITY test_siete_seg IS
+END    test_siete_seg;
 
 -- **********************************************************************
 -- ARQUITECTURA   (descripción de los estímulos)
 -- **********************************************************************
-ARCHITECTURE test_codigo_arq OF test_codigo IS
+ARCHITECTURE test_siete_seg_arq OF test_siete_seg IS
     --Declaración de componentes
-    COMPONENT codigo
+    COMPONENT siete_seg
         Port ( 
            digit0 : in STD_LOGIC_VECTOR (3 downto 0);
            digit1 : in STD_LOGIC_VECTOR (3 downto 0);
            digit2 : in STD_LOGIC_VECTOR (3 downto 0);
            digit3 : in STD_LOGIC_VECTOR (3 downto 0);
-           resultado : out STD_LOGIC);
+           digit_rota : in STD_LOGIC_VECTOR (3 downto 0);
+           segments : out STD_LOGIC_VECTOR (6 downto 0));
 	END COMPONENT;
 
-    SIGNAL RESULTADO : std_logic;
-    SIGNAL DIGIT0,DIGIT1,DIGIT2,DIGIT3 : std_logic_vector(3 downto 0);
+    SIGNAL SEGMENTS : std_logic_vector(6 downto 0);
+    SIGNAL DIGIT0,DIGIT1,DIGIT2,DIGIT3, DIGIT_ROTA : std_logic_vector(3 downto 0);
 
 
 constant ciclo: time := 10 ns;  -- hay que dejar un espacio entre 1 y ns
@@ -34,12 +35,13 @@ BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
     -- Se crea el componente U1 y se conecta a las señales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
-    U1: codigo PORT MAP(
+    U1: siete_seg PORT MAP(
                           digit0    => DIGIT0,
                           digit1    => DIGIT1,
                           digit2    => DIGIT2,
                           digit3    => DIGIT3,
-                          resultado => RESULTADO
+                          segments => SEGMENTS,
+                          digit_rota => DIGIT_ROTA
                        );
 
     -- ======================================================================
@@ -47,30 +49,43 @@ BEGIN
     -- ======================================================================
     tb: PROCESS
     BEGIN
-        -- Rellenar aquí los estímulos dando valores a las entradas
-        digit3 <= "0011";
-        digit2 <= "0111";
-        digit1 <= "1000";
-        digit0 <= "1001";
-        wait for 20 ns;
-        digit3 <= "0100";
-        digit2 <= "0011";
-        digit1 <= "0010";
+        -- Simulación inicial para comprobar que está bien el código
         digit0 <= "0001";
-        wait for 20 ns;
-        digit3 <= "0011";
-        digit2 <= "0111";
-        digit1 <= "1001";
-        digit0 <= "1000";
-        wait for 20 ns;              
-        digit3 <= "0000";
-        digit2 <= "0000";
-        digit1 <= "0000";
-        digit0 <= "0000";        
-        wait;                  -- Espera indefinida con ENABLE_test='1'
+        digit1 <= "0111";
+        digit2 <= "0011";
+        digit3 <= "0110";
+        
+        digit_rota <= "0001";
+        wait for 2*ciclo;
+       
+        digit_rota <= "0010";
+        wait for 2*ciclo;
+        
+        digit_rota <= "0100";
+        wait for 2*ciclo;
+        
+        digit_rota <= "1000";
+        wait for 2*ciclo;
+                      
+        digit0 <= "0101";
+        digit1 <= "0001";
+        digit2 <= "0110";
+        digit3 <= "1001";
+                
+        digit_rota <= "1000";
+        wait for 2*ciclo;
+       
+        digit_rota <= "0100";
+        wait for 2*ciclo;
+        
+        digit_rota <= "0010";
+        wait for 2*ciclo;
+        
+        digit_rota <= "0001";
+        wait;                 -- Espera indefinida con ENABLE_test='1'
     end process tb;
 
-END test_codigo_arq;
+END test_siete_seg_arq;
 
 
 
