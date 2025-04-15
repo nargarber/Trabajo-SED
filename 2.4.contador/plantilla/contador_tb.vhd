@@ -18,11 +18,11 @@ ARCHITECTURE test_contador_arq OF test_contador IS
     COMPONENT contador
 		Port ( 
                    clk      : in  STD_LOGIC;
-                   reset    : in  STD_LOGIC;
-                   enable   : in  STD_LOGIC;
+		   reset    : in  STD_LOGIC;
+		   enable   : in  STD_LOGIC;
                    up       : in  STD_LOGIC;
                    down     : in  STD_LOGIC;
-		           cuenta  : out STD_LOGIC_VECTOR (3 downto 0));
+		   cuenta  : out STD_LOGIC_VECTOR (3 downto 0));
     END COMPONENT;
 
     SIGNAL CLK,ENABLE,UP,DOWN,RESET : std_logic;
@@ -56,8 +56,6 @@ BEGIN
     PROCESS
     BEGIN
         reset <='1';    wait for ciclo/3;
-        reset <='0';    wait for 10*ciclo;
-        reset <='1';    wait for ciclo/3;
         reset <='0';    wait;
     END PROCESS;
 
@@ -72,53 +70,8 @@ BEGIN
         ENABLE    <= '0';
         wait for 1.1*ciclo/2;    -- No tocar
         
-        -- Simulación de comparación con la dada en la memoria
-        for i in 0 to 1 loop
-            UP <= '1';
-            wait for 1.5*ciclo;
-            ENABLE <= '1';
-            wait for 1.1*ciclo/2;
-            ENABLE <= '0';
-            wait for 1.5*ciclo;
-            UP <= '0';
-            wait for 1.5*ciclo;
-        end loop;
-   
-   
-        wait until falling_edge(reset);
-        wait for ciclo;
-        --Simulación de lo que se nos pide aportar
-        for i in 0 to 2 loop
-            UP <= '1';
-            wait for 1.5*ciclo;
-            ENABLE <= '1';
-            wait for 1.1*ciclo/2;
-            ENABLE <= '0';
-            wait for 1.5*ciclo;
-            UP <= '0';
-            wait for 1.5*ciclo;
-        end loop;
-        
-        DOWN <= '1';
-        wait for 1.5*ciclo;
-        ENABLE <= '1';
-        wait for 1.1*ciclo/2;
-        ENABLE <= '0';
-        wait for 1.5*ciclo;
-        DOWN <= '0';
-        wait for 1.5*ciclo;
-        
-        for i in 0 to 1 loop
-            UP <= '1';
-            wait for 1.5*ciclo;
-            ENABLE <= '1';
-            wait for 1.1*ciclo/2;
-            ENABLE <= '0';
-            wait for 1.5*ciclo;
-            UP <= '0';
-            wait for 1.5*ciclo;
-        end loop;        
-        
+        -- rellenar datos aquí
+
         wait;                  -- Espera indefinida 
     end process tb;
 
