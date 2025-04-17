@@ -47,11 +47,29 @@ BEGIN
                reset         => RESET,
                digit_rota    => DIGIT_ROTA
            ); 
-                             
+    -- ======================================================================
+    -- Proceso de la entrada del reset inicial
+    -- ======================================================================                           
 
-   -- Rellena los procesos de reloj, reset y otras entradas (si las hubiera)
-
+    PROCESS
+    BEGIN
+        reset <='1';    wait for ciclo/3;
+        reset <='0';    wait for 10*ciclo;
+        reset <='1';    wait for ciclo/3;
+        reset <='0';    wait;
+    END PROCESS;
+    
+     -- ======================================================================
+    -- Proceso de la simulación de un reloj de entrada
+    -- ======================================================================   
+    PROCESS
+    BEGIN
+        CLK <='0';    wait for ciclo/2;
+        CLK <='1';    wait for ciclo/2;
+    END PROCESS;
+        
 END test_rotacion_arq;
+
 
 
 

@@ -13,35 +13,55 @@ end rotacion;
 
 architecture rotacion_arq of rotacion is
     signal contador_rotacion : unsigned(N20-1 downto 0) := (others => '1');  -- unsigned(19 downto 0)
-    signal fin_rotacion      : std_logic;
     SIGNAL rotacion_selecc : UNSIGNED(1 DOWNTO 0);
-
+    signal fin_rotacion : std_logic;
 
 begin
-
+	
    -- proceso para darle valores (asignar) la señal 'contador_rotacion' 
-   process(clk)
+   --Tambien se gestiona aquí el reset asíncrono
+   process(clk, reset)
    begin
-        if (rising_edge(clk)) then
-
+   	--Para evitar latches
+   	contador_rotacion <= contador_rotacion;
+   	
+   	if(reset = '1') then
+   		contador_rotacion <= (others => '0');
+   		fin_rotacion <= '0';
+   		
+        elsif (rising_edge(clk)) then
+        	
+        	contador_rotacion <= contador_rotacion + 1;
+        	
+		--Esto hay que ver si se puede poner de una forma más mona realmente estamos viendo si en el siguiente ya desborda       
+        	if((contador_rotacion + 1) = 0) then 
+        		fin_rotacion <= '1';	
+        	else
+   			fin_rotacion <= '0';     	
+        	end if;	
         end if;
    end process;
+  
    
    -- señal auxiliar con los dos bits más significativos del contador
-   rotacion_selecc(1 DOWNTO 0) <=  contador_rotacion(contador_rotacion'high downto contador_rotacion'high-1);   
+   rotacion_selecc(1 DOWNTO 0) <=  contador_rotacion( (N20-1) downto (N20-2) );   
 
    -- Proceso para asignar la salida 'digit_rota[]'
    PROCESS (rotacion_selecc)  
    BEGIN
+	
         case rotacion_selecc is
-            when "00" =>               -- selecciona el d
-               
-               -- rellenar código aquí (similar a los apuntes)
-                
+            when "00" =>  digit_rota <= "0001";
+            when "01" =>  digit_rota <= "0010";
+            when "10" =>  digit_rota <= "0100";
+            when "11" =>  digit_rota <= "1000";
+            when others =>  digit_rota <= "1111";             
         end case;
+
     END PROCESS;
 	
 end rotacion_arq;
+
 
 
 

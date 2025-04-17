@@ -49,7 +49,7 @@ cuenta <= std_logic_vector(count);
 process(clk, enable, up, down, reset)
 begin
 --Se ha hecho suponiendo un reset asíncrono, en caso de ser síncrono el reset debe comprobarse después de ver si estamos en un flanco de subida. Preguntar Rafa
- if (reset= '1') then 
+ if (reset = '1') then 
     count <= "0000"; 
  elsif (rising_edge(clk) AND enable = '1') then 
     if (up = '1') then 
@@ -62,3 +62,4 @@ end if;
 end process;
 
 end Behavioral;
+
