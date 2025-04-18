@@ -85,7 +85,7 @@ BEGIN
      wait for 1.1*ciclo/2;
      
      ini_parpadeo <= '1';
-     
+     contador_activo <= "1000";
      --Descomentar esta sección para comprobar que al desactivarse la señan ini_parpadeo para de incrementarse el contador
      -- de parpadeo
      
@@ -98,6 +98,7 @@ BEGIN
      
     end process tb;    
 END test_rotacion_arq;
+
 
 
 
