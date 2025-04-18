@@ -30,23 +30,31 @@ begin
         IF (reset='1') THEN                 -- Reset activo a nviel alto
             estado_s  <=reposo;
             regDesplazaContadorActivo <= "1000";
+            enable_contador <= (others => '0');
             
         ELSIF (rising_edge(clk)) THEN  
-            estado_s  <= estado_c;
-
-           
+            estado_s  <= estado_c;	
+            enable_contador <= (others => '0');
+            
             -- actualiza regDesplazaContadorActivo para que rote a derecha o izquierda
-            IF xxx THEN
-
+            IF (estado_s = izquierda_derecha_enable) THEN
+		if(izquierda = '1') then
+			regDesplazaContadorActivo <= regDesplazaContadorActivo(2 downto 0) & regDesplazaContadorActivo(3);
+		elsif(derecha = '1') then
+			regDesplazaContadorActivo <= regDesplazaContadorActivo(0) & regDesplazaContadorActivo(3 downto 1);
+		end if;
             END IF;
-                   
+            
+            if ( estado_s = arriba_abajo_enable) then
+            	enable_contador <= regDesplazaContadorActivo;
+            end if;       
                    
         END IF;
     END PROCESS;
     
     
     
-    PROCESS (estado_s,arriba,abajo,derecha,izquierda,fin_parpadeo)
+    PROCESS (estado_s,arriba,abajo,derecha,izquierda) --,fin_parpadeo)
     BEGIN
         -- ----------------------------------
         -- Valores por defecto
@@ -58,19 +66,37 @@ begin
 
         CASE estado_s IS
             WHEN reposo =>
+                   if(derecha = '1' OR izquierda = '1') then
+                   	estado_c <= izquierda_derecha_enable;
+                   elsif(arriba = '1' OR abajo = '1') then
+                   	estado_c <= arriba_abajo_enable;
+                   else
+                   	estado_c <= reposo;
+                   end if;
                    
             WHEN izquierda_derecha_enable =>
-
+            
+		estado_c <= espera_boton_pulsado;
+		
             WHEN espera_boton_pulsado =>
+                 if (arriba = '1' OR abajo = '1' OR arriba = '1' OR abajo = '1') then
+                 	estado_c <= espera_boton_pulsado;
+                 else
+                 	estado_c <= reposo;
+                 end if;
                                           
             WHEN arriba_abajo_enable =>
+            
+                  estado_c <= espera_boton_pulsado;
                   
             WHEN OTHERS =>
+            	estado_c <= estado_c;
 
         END CASE;
    END PROCESS;
     
 end control_arq;
+
 
 
 

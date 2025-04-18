@@ -84,13 +84,29 @@ BEGIN
         IZQUIERDA<= '0';
 --        FIN_PARPADEO <= '0';
         wait for 13*ciclo/4;    
+ 	ARRIBA   <= '1';
+ 	wait for 1.5*ciclo;
+ 	ARRIBA <= '0';
+ 	wait for 3*ciclo;
+ 	
+  	ABAJO  <= '1';
+ 	wait for 1.5*ciclo;
+ 	ABAJO <= '0';
+ 	wait for 3*ciclo;
+ 	
+ 	DERECHA  <= '1';
+ 	wait for 1.5*ciclo;
+ 	DERECHA <= '0';
+ 	wait for 3*ciclo;
  
-         -- Rellenar estímulos aquí
- 
+  	IZQUIERDA   <= '1';
+ 	wait for 1.5*ciclo;
+ 	IZQUIERDA <= '0';
         wait;                  
     end process tb;
 
 END test_control_arq;
+
 
 
 
