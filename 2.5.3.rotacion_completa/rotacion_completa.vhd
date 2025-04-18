@@ -70,21 +70,37 @@ begin
    BEGIN
 	
         case rotacion_selecc is
-            when "00" =>  digit_rota <= "0001";
-            when "01" =>  digit_rota <= "0010";
-            when "10" =>  digit_rota <= "0100";
-            when "11" =>  digit_rota <= "1000";
-            when others =>  digit_rota <= "1111";             
+            when "00" =>  
+            	digit_rota <= "0001";
+            	if(contador_activo = "0001" AND ini_parpadeo = '1' AND contador_parpadeo(contador_parpadeo'high-NP) = '0' AND contador_parpadeo(N10-1) = '0') then
+	     		digit_rota <= (others => '0');
+		end if;
+            when "01" =>  
+            	digit_rota <= "0010";
+            	if(contador_activo = "0010" AND ini_parpadeo = '1' AND contador_parpadeo(contador_parpadeo'high-NP) = '0' AND contador_parpadeo(N10-1) = '0') then
+	     		digit_rota <= (others => '0');
+		end if;            	
+            when "10" =>  
+            	digit_rota <= "0100";
+            	if(contador_activo = "0100" AND ini_parpadeo = '1' AND contador_parpadeo(contador_parpadeo'high-NP) = '0' AND contador_parpadeo(N10-1) = '0') then
+	     		digit_rota <= (others => '0');
+		end if;            	
+            when "11" =>  
+            	digit_rota <= "1000";
+             	if(contador_activo = "1000" AND ini_parpadeo = '1' AND contador_parpadeo(contador_parpadeo'high-NP) = '0' AND contador_parpadeo(N10-1) = '0') then
+	     		digit_rota <= (others => '0');
+		end if;           	
+            when others =>  
+            	digit_rota <= "1111";             
         end case;
 	
 	
-        if( digit_rota = contador_activo AND ini_parpadeo = '0' AND contador_parpadeo(contador_parpadeo'high-NP) = '0') then
-	     digit_rota <= (others => '0');
-	end if;
+        
 	
     END PROCESS;
 	
 end rotacion_arq;
+
 
 
 

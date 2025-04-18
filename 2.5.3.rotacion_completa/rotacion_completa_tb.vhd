@@ -45,7 +45,8 @@ BEGIN
     -- Se crea el componente U1 y se conecta a las señales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: rotacion 
-           GENERIC MAP (N20 => 2, N10 => 4) 
+           GENERIC MAP (N20 => 2, N10 => 4, NP => 2)
+           --GENERIC MAP (N20 => 2, N10 => 4, NP => 3)
            PORT MAP(
                clk           => CLK,
                reset         => RESET,
@@ -98,6 +99,7 @@ BEGIN
      
     end process tb;    
 END test_rotacion_arq;
+
 
 
 
