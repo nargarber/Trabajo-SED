@@ -1,0 +1,7 @@
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+ieeevarnumeric_stdieee.sym/numeric_std/prim.var
+ieeesrcnumeric_stdnumstd.vhd
+.varrotacion(rotacion_arq)nys.sym/rotacion/_rotacion_arq.var
+.srcrotacion(rotacion_arq)../2.5.1.rotacion_basica/rotacion_basica.vhd
+.varrotacionnys.sym/rotacion/prim.var

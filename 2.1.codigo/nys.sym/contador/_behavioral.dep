@@ -1,0 +1,7 @@
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+ieeevarnumeric_stdieee.sym/numeric_std/prim.var
+ieeesrcnumeric_stdnumstd.vhd
+.varcontador(behavioral)nys.sym/contador/_behavioral.var
+.srccontador(behavioral)../2.4.contador/contador.vhd
+.varcontadornys.sym/contador/prim.var

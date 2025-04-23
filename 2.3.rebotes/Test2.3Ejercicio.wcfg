@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="test_rebotes_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="test_rebotes" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="484.001 ns"></ZoomEndTime>
+      <Cursor1Time time="80.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="135"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wvobject fp_name="/test_rebotes/CLK" type="logic">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_rebotes/I" type="logic">
+      <obj_property name="ElementShortName">I</obj_property>
+      <obj_property name="ObjectShortName">I</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_rebotes/O" type="logic">
+      <obj_property name="ElementShortName">O</obj_property>
+      <obj_property name="ObjectShortName">O</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_rebotes/i_rebotes/biestables" type="array">
+      <obj_property name="ElementShortName">biestables[1:0]</obj_property>
+      <obj_property name="ObjectShortName">biestables[1:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_rebotes/i_rebotes/reinicia" type="logic">
+      <obj_property name="ElementShortName">reinicia</obj_property>
+      <obj_property name="ObjectShortName">reinicia</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_rebotes/i_rebotes/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_rebotes/i_rebotes/cuenta" type="array">
+      <obj_property name="ElementShortName">cuenta[1:0]</obj_property>
+      <obj_property name="ObjectShortName">cuenta[1:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_rebotes/ciclo" type="other">
+      <obj_property name="ElementShortName">ciclo</obj_property>
+      <obj_property name="ObjectShortName">ciclo</obj_property>
+   </wvobject>
+</wave_config>

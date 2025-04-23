@@ -1,0 +1,6 @@
+.srcrotacion../2.5.1.rotacion_basica/rotacion_basica.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_rotacion(test_rotacion_arq)nys.sym/test_rotacion/_test_rotacion_arq.var
+.srctest_rotacion(test_rotacion_arq)../2.5.1.rotacion_basica/rotacion_basica_tb.vhd
+.vartest_rotacionnys.sym/test_rotacion/prim.var

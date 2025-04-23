@@ -1,0 +1,6 @@
+.srcsiete_seg../2.2.siete_seg/siete_seg.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_siete_seg(test_siete_seg_arq)nys.sym/test_siete_seg/_test_siete_seg_arq.var
+.srctest_siete_seg(test_siete_seg_arq)../2.2.siete_seg/siete_seg_tb.vhd
+.vartest_siete_segnys.sym/test_siete_seg/prim.var

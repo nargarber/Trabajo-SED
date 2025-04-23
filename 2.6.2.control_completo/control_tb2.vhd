@@ -5,16 +5,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulaciï¿½n no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulación no tiene)
 -- **********************************************************************
 ENTITY test_control IS
 END    test_control;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripciï¿½n de los estï¿½mulos)
+-- ARQUITECTURA   (descripción de los estímulos)
 -- **********************************************************************
 ARCHITECTURE test_control_arq OF test_control IS
-    --Declaraciï¿½n de componentes
+    --Declaración de componentes
     COMPONENT control
       Port ( 
         clk       : in STD_LOGIC;
@@ -37,7 +37,7 @@ ARCHITECTURE test_control_arq OF test_control IS
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las seï¿½ales internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las señales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: control PORT MAP(
            clk       => CLK,
@@ -79,7 +79,7 @@ BEGIN
         FIN_PARPADEO <= '0';
         wait for 13*ciclo/4;    
  
-         -- Rellenar estï¿½mulos aquï¿½
+         -- Rellenar estímulos aquí
  
         wait;                  
     end process tb;

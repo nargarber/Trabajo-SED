@@ -1,0 +1,6 @@
+.srccontador../2.4.contador/contador.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_contador(test_contador_arq)nys.sym/test_contador/_test_contador_arq.var
+.srctest_contador(test_contador_arq)../2.4.contador/contador_tb.vhd
+.vartest_contadornys.sym/test_contador/prim.var

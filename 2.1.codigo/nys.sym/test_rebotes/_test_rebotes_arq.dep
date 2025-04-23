@@ -1,0 +1,6 @@
+.srcrebotes../2.3.rebotes/rebotes.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_rebotes(test_rebotes_arq)nys.sym/test_rebotes/_test_rebotes_arq.var
+.srctest_rebotes(test_rebotes_arq)../../2.3.rebotes/rebotes_tb.vhd
+.vartest_rebotesnys.sym/test_rebotes/prim.var

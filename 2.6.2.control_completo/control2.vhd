@@ -19,7 +19,7 @@ end control;
 
 architecture control_arq of control is
     signal regDesplazaContadorActivo : std_logic_vector(3 downto 0);
-    TYPE ESTADOS IS (reposo, izquierda_derecha_enable,espera_boton_pulsado, arriba_abajo_enable);  -- , parpadeando);
+    TYPE ESTADOS IS (reposo, izquierda_derecha_enable,espera_boton_pulsado, arriba_abajo_enable, parpadeando);  -- , parpadeando);
     SIGNAL estado_s, estado_c : ESTADOS;
     
 begin
@@ -77,11 +77,10 @@ begin
 		         estado_c <= espera_boton_pulsado;
 		
             WHEN espera_boton_pulsado =>
-            	--Si se pulsa cualquier bot�n nos mantenemos en el estado
                  if (arriba = '1' OR abajo = '1' OR arriba = '1' OR abajo = '1') then
                  	estado_c <= espera_boton_pulsado;
-                 else
-                 	estado_c <= reposo;
+                 elsif ( arriba = '0' AND abajo = '0' AND derecha = '0' AND izquierda = '0') THEN
+                    estado_c <= parpadeando;
                  end if;
                                           
             WHEN arriba_abajo_enable =>
