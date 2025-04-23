@@ -42,7 +42,7 @@ begin
         	
         	contador_rotacion <= contador_rotacion + 1;
         	
-		--Esto hay que ver si se puede poner de una forma más mona realmente estamos viendo si en el siguiente ya desborda       
+		-- Vemos si al sumarle uno más desborda       
         	if((contador_rotacion + 1) = 0) then 
         		fin_rotacion <= '1';	
         	else
@@ -80,6 +80,7 @@ begin
     END PROCESS;
 	
 end rotacion_arq;
+
 
 
 

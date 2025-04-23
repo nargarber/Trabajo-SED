@@ -28,14 +28,14 @@ ARCHITECTURE test_control_arq OF test_control IS
         abajo     : in STD_LOGIC;
         izquierda : in STD_LOGIC;
         derecha   : in STD_LOGIC;
-     --   fin_parpadeo    : in  STD_LOGIC;
-     --   ini_parpadeo    : out  STD_LOGIC;
+        fin_parpadeo    : in  STD_LOGIC;
+        ini_parpadeo    : out  STD_LOGIC;
         enable_contador : out STD_LOGIC_VECTOR (3 downto 0);                     -- un pulso de 1 ciclo de reloj para que cuente solo 1
         contador_activo : out STD_LOGIC_VECTOR (3 downto 0)
       );
     END COMPONENT;
 
-    SIGNAL CLK,ARRIBA,ABAJO,IZQUIERDA,DERECHA,RESET: std_logic;                -- ,INI_PARPADEO,FIN_PARPADEO
+    SIGNAL CLK,ARRIBA,ABAJO,IZQUIERDA,DERECHA,RESET,INI_PARPADEO,FIN_PARPADEO: std_logic;                -- ,INI_PARPADEO,FIN_PARPADEO
     SIGNAL ENABLE_CONTADOR,CONTADOR_ACTIVO : std_logic_vector(3 downto 0);
 
 
@@ -52,8 +52,8 @@ BEGIN
            abajo     =>  ABAJO,
            izquierda =>  IZQUIERDA,
            derecha   =>  DERECHA,
-       --    ini_parpadeo    =>  INI_PARPADEO,
-       --    fin_parpadeo    =>  FIN_PARPADEO,
+           ini_parpadeo    =>  INI_PARPADEO,
+           fin_parpadeo    =>  FIN_PARPADEO,
            enable_contador => ENABLE_CONTADOR,   -- un pulso de 1 ciclo de reloj para que cuente solo 1
            contador_activo  => CONTADOR_ACTIVO); 
                              
@@ -82,66 +82,36 @@ BEGIN
         ABAJO    <= '0';
         DERECHA  <= '0';
         IZQUIERDA<= '0';
---        FIN_PARPADEO <= '0';
-        wait for 13*ciclo/4;    
+        FIN_PARPADEO <= '0';
+        wait for 13*ciclo/4;  
+          
  	ARRIBA   <= '1';
  	wait for 1.5*ciclo;
  	ARRIBA <= '0';
+ 	wait for 100 ns;
+ 	
+   	FIN_PARPADEO   <= '1';
+  	wait for 1.5*ciclo;
+ 	FIN_PARPADEO <= '0';
  	wait for 3*ciclo;
  	
+  	IZQUIERDA <= '1';
+ 	wait for 1.5*ciclo;
+ 	IZQUIERDA <= '0';
+ 	wait for 1.75*ciclo;
+ 		
   	ABAJO  <= '1';
  	wait for 1.5*ciclo;
  	ABAJO <= '0';
- 	wait for 3*ciclo;
- 	
- 	IZQUIERDA <= '1';
- 	wait for 1.5*ciclo;
- 	IZQUIERDA <= '0';
- 	wait for 3*ciclo;
+ 	wait for 100 ns;
  
-  	DERECHA   <= '1';
- 	wait for 1.5*ciclo;
- 	DERECHA <= '0';
-        wait;                  
+ 
+  	FIN_PARPADEO   <= '1';
+  	wait for 1.5*ciclo;
+ 	FIN_PARPADEO <= '0';
+ 	wait;
+                        
     end process tb;
 
 END test_control_arq;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

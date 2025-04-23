@@ -30,24 +30,21 @@ begin
         IF (reset='1') THEN                 -- Reset activo a nviel alto
             estado_s  <=reposo;
             regDesplazaContadorActivo <= "1000";
-            enable_contador <= (others => '0');
+           
+   
             
         ELSIF (rising_edge(clk)) THEN  
-            estado_s  <= estado_c;	
-            enable_contador <= (others => '0');
-            
+            estado_s  <= estado_c;
+           
             -- actualiza regDesplazaContadorActivo para que rote a derecha o izquierda
             IF (estado_s = izquierda_derecha_enable) THEN
-		if(izquierda = '1') then
-			regDesplazaContadorActivo <= regDesplazaContadorActivo(2 downto 0) & regDesplazaContadorActivo(3);
-		elsif(derecha = '1') then
-			regDesplazaContadorActivo <= regDesplazaContadorActivo(0) & regDesplazaContadorActivo(3 downto 1);
-		end if;
+		      IF(izquierda = '1') then
+			     regDesplazaContadorActivo <= regDesplazaContadorActivo(2 downto 0) & regDesplazaContadorActivo(3);
+		      ELSIF(derecha = '1') then
+			     regDesplazaContadorActivo <= regDesplazaContadorActivo(0) & regDesplazaContadorActivo(3 downto 1);
+		      END IF;
             END IF;
-            
-            if ( estado_s = arriba_abajo_enable) then
-            	enable_contador <= regDesplazaContadorActivo;
-            end if;       
+     
                    
         END IF;
     END PROCESS;
@@ -60,25 +57,27 @@ begin
         -- Valores por defecto
         -- ----------------------------------
         estado_c        <= estado_s;
-        enable_contador <= "0000";  -- Se activarÃ¡ en un estado transitorio de un ciclo de reloj
-      --  ini_parpadeo    <= '0';   -- no se usa en la versi n basica
+        enable_contador <= "0000";  -- Se activarA en un estado transitorio de un ciclo de reloj
+      --  ini_parpadeo    <= '0';   -- no se usa en la versiOn basica
         -- ----------------------------------
 
         CASE estado_s IS
             WHEN reposo =>
-                   if(derecha = '1' OR izquierda = '1') then
+                 if(derecha = '1' OR izquierda = '1') then
                    	estado_c <= izquierda_derecha_enable;
-                   elsif(arriba = '1' OR abajo = '1') then
-                   	estado_c <= arriba_abajo_enable;
-                   else
-                   	estado_c <= reposo;
-                   end if;
+                 elsif(arriba = '1' OR abajo = '1') then
+                  	estado_c <= arriba_abajo_enable;
+                  	
+                 else
+                  	estado_c <= reposo;
+                 end if;
                    
             WHEN izquierda_derecha_enable =>
             
-		estado_c <= espera_boton_pulsado;
+		         estado_c <= espera_boton_pulsado;
 		
             WHEN espera_boton_pulsado =>
+            	--Si se pulsa cualquier botón nos mantenemos en el estado
                  if (arriba = '1' OR abajo = '1' OR arriba = '1' OR abajo = '1') then
                  	estado_c <= espera_boton_pulsado;
                  else
@@ -86,7 +85,7 @@ begin
                  end if;
                                           
             WHEN arriba_abajo_enable =>
-            
+                  enable_contador  <= regDesplazaContadorActivo ;
                   estado_c <= espera_boton_pulsado;
                   
             WHEN OTHERS =>
@@ -96,6 +95,8 @@ begin
    END PROCESS;
     
 end control_arq;
+
+
 
 
 

@@ -12,11 +12,14 @@ end codigo;
 
 architecture codigo_arq of codigo is
 begin
-resultado <= '1' when (digit3 = "0100" and
-                       digit2 = "0011" and
-                       digit1 = "0010" and
-                       digit0 = "0001") else '0';
+--Resultado sólo será 1 si se cumple que los dígitos sean lo que queramos
+resultado <= '1' when (digit3 = "0100" and -- digit3 = 4
+                       digit2 = "0011" and -- digit2 = 3
+                       digit1 = "0010" and -- digit1 = 2
+                       digit0 = "0001") -- digit0 = 1
+                       else '0';
 end codigo_arq;
+
 
 
 

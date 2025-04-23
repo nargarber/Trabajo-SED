@@ -65,3 +65,4 @@ segments <= "1000000" when "0000",  -- 0
             "1111111" when others;  -- all segments OFF (default)
 
 end Behavioral;
+
