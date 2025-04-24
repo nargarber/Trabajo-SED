@@ -4,7 +4,7 @@ USE ieee.std_logic_unsigned.all;
 
 ENTITY rebotes IS
   GENERIC(
-    N  :  INTEGER := 21); -- tamano contador (20 bits dan 10.5ms con reloj de 100Mhz)
+    N21  :  INTEGER := 21); -- tamano contador (20 bits dan 10.5ms con reloj de 100Mhz)
   PORT(
     clk : IN  STD_LOGIC;  --input clock
     i   : IN  STD_LOGIC;  --input signal to be rebotesd
@@ -14,7 +14,7 @@ END rebotes;
 ARCHITECTURE rebotes_arq OF rebotes IS
   SIGNAL biestables: STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";              --input flip flops
   SIGNAL reinicia  : STD_LOGIC := '0';                                  --sync reset to zero
-  SIGNAL cuenta    : STD_LOGIC_VECTOR(N-1 DOWNTO 0) := (OTHERS => '0'); --counter output
+  SIGNAL cuenta    : STD_LOGIC_VECTOR(N21-1 DOWNTO 0) := (OTHERS => '0'); --counter output
   SIGNAL reset     : STD_LOGIC := '0';
 BEGIN
 
@@ -31,7 +31,7 @@ BEGIN
         CUENTA <= (others =>'0');
       ELSE
         CUENTA <= CUENTA + 1;
-        IF(CUENTA(N-1) = '1') THEN
+        IF(CUENTA(N21-1) = '1') THEN
             o <= biestables(1);
         END IF;
         END IF;
